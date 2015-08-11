@@ -1,0 +1,4 @@
+*pyc
+fabfile.py
+myblog_DjangoProject/local_settings.py
+myblog_DjangoProject/media/
