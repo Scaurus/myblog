@@ -1,4 +1,5 @@
-*pyc
-fabfile.py
-myblog_DjangoProject/local_settings.py
-myblog_DjangoProject/media/
+*.pyc
+*.sqlite3
+myblog_DjangoProject/blog/fabfile.py
+myblog_DjangoProject/myblog_DjangoProject/local_settings.py
+myblog_DjangoProject/myblog_DjangoProject/media/
