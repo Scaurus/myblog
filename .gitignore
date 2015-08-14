@@ -3,5 +3,5 @@
 myblog_DjangoProject/blog/fabfile.py
 myblog_DjangoProject/myblog_DjangoProject/local_settings.py
 myblog_DjangoProject/myblog_DjangoProject/media/
-
+.idea/
 myblog_DjangoProject/db.sqlite3
