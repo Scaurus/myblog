@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Статья</title>
+</head>
+<body>
+<h4> article_id: {{ article_id }}</h4>
+<h4>{{ article.article_date}}</h4>
+<h2>{{article.article_title}}</h2>
+<p>{{article.article_text}}</p>
+<hr>
+<p>Комментарии:</p>
+{% for comment in comments %}
+{{comment.comments_text}}
+
+{% endfor %}
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Лента Записей</title>
+</head>
+<body>
+{% for article in articles  %}
+<h6>Дата Публикации: {{article.article_date}}</h6>
+<h1>article id : {{ article.id }}</h1>
+<h4><a href="/articles/get/{{article.id}}">{{article.article_title}}</a> </h4>
+<p>{{article.article_text}}</p>
+<p>Понравилось: {{article.article_likes}}</p>
+<hr>
+{% endfor %}
+
+</body>
+</html>
