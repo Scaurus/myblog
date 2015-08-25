@@ -34,6 +34,8 @@ ALLOWED_HOSTS = []
 TEMPLATE_DIRS = (
     #'/Users/Zhuravskiy/GIT/myblog/myblog_DjangoProject/templates',
     os.path.join(BASE_DIR,  'templates'),
+    os.path.join(BASE_DIR,  'blog/templates'),
+
 )
 
 

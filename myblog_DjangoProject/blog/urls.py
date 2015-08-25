@@ -8,4 +8,5 @@ urlpatterns = patterns('',
                        url(r'^3/', 'blog.views.homepage3'),
                        url(r'^articles/all/$', 'blog.views.articles'),
                        url(r'^articles/get/(?P<article_id>\d+)/$', 'blog.views.this_article'),
+                       url(r'^$', 'blog.views.articles'),
                        )
