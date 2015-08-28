@@ -8,10 +8,11 @@ from django.shortcuts import render_to_response
 from blog.models import Article, Comments
 from blog.forms import CommentForm
 from django.core.context_processors import csrf
+import datetime
 
 
 # Create your views here.
-
+today = datetime.datetime.today()
 
 
 def homepage(request):
@@ -55,20 +56,28 @@ def this_article(request, article_id=1):
 
 def addlike(request, article_id):
     try:
-        article = Article.objects.get(id=article_id)
-        article.article_likes += 1
-        article.save()
-
+        if article_id in request.COOKIES:
+            redirect('/')
+        else:
+            article = Article.objects.get(id=article_id)
+            article.article_likes += 1
+            article.save()
+            response = redirect('/')
+            response.set_cookie(article_id, today)
+            return response
     except ObjectDoesNotExist:
         raise Http404
     return redirect('/')
 
 
 def addcomment(request, article_id):
-    if request.POST:
+    if request.POST and ('pause') not in request.session:
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
             comment.comments_article = Article.objects.get(id=article_id)
             form.save()
+            request.session.set_expiry(60)
+            request.session['pause'] = True
+
     return redirect('/articles/get/%s/' % article_id)
