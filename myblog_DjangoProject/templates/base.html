@@ -1,12 +1,19 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="{% static "/static/css/foundation.css" %}">
+{#    myblog_DjangoProject/static/css/foundation.css#}
+
     <meta charset="UTF-8">
     <title>Базовый шаблон</title>
 </head>
 <body>
 <h1><a href="/">Мой Блог!</a></h1>
+<div class="row">
 <h6><a href="/articles/all/">все статьи</a></h6>
 {% block article %}{% endblock %}
+</div>
 </body>
 </html>
