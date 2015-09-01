@@ -23,5 +23,6 @@ admin.autodiscover()
 urlpatterns = patterns('',
                        url(r'^admin/', include(admin.site.urls)),  # URL админки http://имя_сайта/admin/
                        url(r'^homepage/', include('blog.urls')),
+                       url(r'^auth/', include('authorization.urls')),
                        url(r'^', include('blog.urls')),
                        )

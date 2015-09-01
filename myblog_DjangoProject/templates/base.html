@@ -10,10 +10,22 @@
     <title>Базовый шаблон</title>
 </head>
 <body>
+<div class="top-bar">
+    <section class="top-bar-section">
+        <ul class="right">
+            {% if username %}
+                <li><a href="/auth/logout/">Выйти ({{ username }})</a> </li>
+            {% else %}
+                <li><a href="/auth/login/">Войти</a> </li>
+            {% endif %}
+        </ul>
+    </section>
+</div>
 <h1><a href="/">Мой Блог!</a></h1>
 <div class="row">
 <h6><a href="/articles/all/">все статьи</a></h6>
 {% block article %}{% endblock %}
+{% block login %}{% endblock %}
 </div>
 </body>
 </html>

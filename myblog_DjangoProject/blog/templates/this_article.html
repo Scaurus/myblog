@@ -1,21 +1,22 @@
 {% extends 'base.html' %}
 
 {% block article %}
-<h6>{{ article.article_date}}</h6>
-<h2>{{article.article_title}}</h2>
-<p>{{article.article_text}}</p>
-<hr>
+    <h6>{{ article.article_date}}</h6>
+    <h2>{{article.article_title}}</h2>
+    <p>{{article.article_text}}</p>
+    <hr>
     <div class="large-offset-1 large-8 columns">
-<p>Комментарии:</p>
+    <p>Комментарии:</p>
 
-{% for comment in comments %}
-<p>{{comment.comments_text}}</p>
-{% endfor %}
-<form action ='/articles/addcomment/{{ article.id }}/', method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" class="button" value="Добавить комментарий">
-</form>
-
+    {% for comment in comments %}
+        <p>{{comment.comments_text}}</p>
+    {% endfor %}
+    {% if username %}
+        <form action ='/articles/addcomment/{{ article.id }}/', method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" class="button" value="Добавить комментарий">
+        </form>
+    {% endif %}
     </div>
 {% endblock %}
