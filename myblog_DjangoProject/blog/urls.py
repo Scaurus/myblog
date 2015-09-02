@@ -10,5 +10,7 @@ urlpatterns = patterns('',
                        url(r'^articles/get/(?P<article_id>\d+)/$', 'blog.views.this_article'),
                        url(r'^articles/addlike/(?P<article_id>\d+)/$', 'blog.views.addlike'),
                        url(r'^articles/addcomment/(?P<article_id>\d+)/$', 'blog.views.addcomment'),
+                       url(r'^page/(\d+)/$', 'blog.views.articles'),
+
                        url(r'^$', 'blog.views.articles'),
                        )
