@@ -11,6 +11,30 @@
     {% for comment in comments %}
         <p>{{comment.comments_text}}</p>
     {% endfor %}
+    </div>
+    <div class="row">
+        <div class="large-3 large-offset-5 columns">
+            <ul class="pagination">
+                {% if comments.has_previous %}
+                    <li class="arrow"><a href="/articles/get/{{article.id}}/comments/{{ comments.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                    <li class="arrow unavailable"><a href="">&laquo;</a></li>
+                {% endif %}
+                {% for page in comments.paginator.page_range %}
+                    {% if page == comments.number %}
+                        <li class="current"><a href="/articles/get/{{article.id}}/comments/{{ page }}/">{{ page }}</a></li>
+                    {% else %}
+                        <li><a href="/articles/get/{{article.id}}/comments/{{ page }}/">{{ page }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if comments.has_next %}
+                    <li class="arrow"><a href="/articles/get/{{article.id}}/comments/{{ comments.next_page_number }}/">&raquo;</a></li>
+                {% else %}
+                    <li class="arrow unavailable"><a href="">&raquo;</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
     {% if username %}
         <form action ='/articles/addcomment/{{ article.id }}/', method="post">
             {% csrf_token %}

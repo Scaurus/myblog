@@ -49,12 +49,14 @@ def articles(request, page_number=1):
 #                                'article_id': Article.objects.get(id=article_id).id
 #                                })
 
-def this_article(request, article_id=1):
+def this_article(request, article_id=1, comments_page_number=2):
+    all_comments = Comments.objects.filter(comments_article_id=article_id)
+    paginator = Paginator(all_comments, 2)
     comment_form = CommentForm
     args = {}
     args.update(csrf(request))
     args['article'] = Article.objects.get(id=article_id)
-    args['comments'] = Comments.objects.filter(comments_article_id=article_id)
+    args['comments'] = paginator.page(comments_page_number)
     args['form'] = comment_form
     args['username'] = auth.get_user(request).username
     return render_to_response('this_article.html', args)
